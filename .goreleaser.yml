@@ -1,10 +1,12 @@
+version: 2
+
 before:
   hooks:
     - go mod verify
     - go mod vendor
 
 builds:
-  - id: antidot-home-linux
+  - id: antidot-home
     binary: antidot-home
     ldflags:
       - -s -w -X 'main.version={{ .Version }}'
@@ -12,50 +14,34 @@ builds:
       - CGO_ENABLED=0
     goos:
       - linux
-    goarch:
-      - amd64
-  - id: antidot-home-darwin
-    binary: antidot-home
-    ldflags:
-      - -s -w -X 'main.version={{ .Version }}'
-    env:
-      - CGO_ENABLED=0
-    goos:
       - darwin
     goarch:
       - amd64
+      - arm64
 
 archives:
   - id: release
     name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-    format: tar.gz
-    builds:
-      - antidot-home-linux
-      - antidot-home-darwin
-    replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
+    formats:
+      - tar.gz
+    ids:
+      - antidot-home
 
   - id: binaries
     name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-    format: binary
-    builds:
-      - antidot-home-linux
-      - antidot-home-darwin
-    replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
+    formats:
+      - binary
+    ids:
+      - antidot-home
 
   - id: aur
     name_template: "aur_{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-    builds:
-      - antidot-linux
+    formats:
+      - tar.gz
+    ids:
+      - antidot-home
+    files:
+      - none*
 
 checksum:
   name_template: checksums.txt
@@ -71,24 +57,23 @@ changelog:
   sort: asc
   filters:
     exclude:
-      - '^docs'
-      - '^test'
-      - '^tests'
-      - '^chore'
+      - "^docs"
+      - "^test"
+      - "^tests"
+      - "^chore"
 
 brews:
-  - name: antidot
-    folder: Formula
-    homepage: "https://github.com/bad3r/antidot"
-    description: "Cleans up your $HOME from those pesky dotfiles"
-    url_template: "https://github.com/bad3r/antidot/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    skip_upload: false
-    ids:
-      - release
-    tap:
+  - name: antidot-home
+    repository:
       owner: bad3r
       name: homebrew-tap
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
-    commit_author:
-      name: goreleaserbot
-      email: goreleaser@doron.dev
+    homepage: "https://github.com/bad3r/antidot-home"
+    description: "Cleans up your $HOME from those pesky dotfiles"
+    license: "MIT"
+    skip_upload: false
+    ids:
+      - release
+    commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+    install: |
+      bin.install "antidot-home"
