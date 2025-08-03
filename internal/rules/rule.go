@@ -1,8 +1,8 @@
 package rules
 
 import (
-	"github.com/bad3r/antidot/internal/dotfile"
-	"github.com/bad3r/antidot/internal/tui"
+	"github.com/bad3r/antidot-home/internal/dotfile"
+	"github.com/bad3r/antidot-home/internal/tui"
 )
 
 type Rule struct {

@@ -36,12 +36,12 @@ var AppDirs appDirs
 
 func init() {
 	// TODO: import this from somewhere
-	AppDirs = appDirs{AppName: "antidot"}
+	AppDirs = appDirs{AppName: "antidot-home"}
 }
 
 func GetKeyValueStorePath() (string, error) {
-	// Check if ANTIDOT_STATE_FILE environment variable is set
-	if stateFile := os.Getenv("ANTIDOT_STATE_FILE"); stateFile != "" {
+	// Check if ANTIDOT_HOME_STATE_FILE environment variable is set
+	if stateFile := os.Getenv("ANTIDOT_HOME_STATE_FILE"); stateFile != "" {
 		return stateFile, nil
 	}
 

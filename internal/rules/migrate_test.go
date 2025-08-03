@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/bad3r/antidot/internal/rules"
-	"github.com/bad3r/antidot/internal/shell"
-	"github.com/bad3r/antidot/internal/utils"
+	"github.com/bad3r/antidot-home/internal/rules"
+	"github.com/bad3r/antidot-home/internal/shell"
+	"github.com/bad3r/antidot-home/internal/utils"
 )
 
 func TestMigrateApply(t *testing.T) {

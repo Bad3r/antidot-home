@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/bad3r/antidot/internal/shell"
+	"github.com/bad3r/antidot-home/internal/shell"
 	"github.com/google/go-cmp/cmp"
 )
 

@@ -4,8 +4,8 @@ before:
     - go mod vendor
 
 builds:
-  - id: antidot-linux
-    binary: antidot
+  - id: antidot-home-linux
+    binary: antidot-home
     ldflags:
       - -s -w -X 'main.version={{ .Version }}'
     env:
@@ -14,8 +14,8 @@ builds:
       - linux
     goarch:
       - amd64
-  - id: antidot-darwin
-    binary: antidot
+  - id: antidot-home-darwin
+    binary: antidot-home
     ldflags:
       - -s -w -X 'main.version={{ .Version }}'
     env:
@@ -30,8 +30,8 @@ archives:
     name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     format: tar.gz
     builds:
-      - antidot-linux
-      - antidot-darwin
+      - antidot-home-linux
+      - antidot-home-darwin
     replacements:
       darwin: Darwin
       linux: Linux
@@ -43,8 +43,8 @@ archives:
     name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     format: binary
     builds:
-      - antidot-linux
-      - antidot-darwin
+      - antidot-home-linux
+      - antidot-home-darwin
     replacements:
       darwin: Darwin
       linux: Linux

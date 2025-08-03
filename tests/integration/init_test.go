@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bad3r/antidot/tests"
+	"github.com/bad3r/antidot-home/tests"
 	"github.com/stretchr/testify/require"
 )
 
@@ -75,14 +75,14 @@ func TestInitCommand(t *testing.T) {
 	defer env.Cleanup()
 
 	t.Run("init without shell override", func(t *testing.T) {
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init")
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init")
 
 		// Pass the current environment to ensure XDG variables are available
 		initCmd.Env = os.Environ()
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init failed")
+		require.NoError(t, err, "antidot-home init failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -96,14 +96,14 @@ func TestInitCommand(t *testing.T) {
 	})
 
 	t.Run("init with bash shell", func(t *testing.T) {
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "bash")
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "bash")
 
 		// Pass the current environment to ensure XDG variables are available
 		initCmd.Env = os.Environ()
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init --shell bash failed")
+		require.NoError(t, err, "antidot-home init --shell bash failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -117,14 +117,14 @@ func TestInitCommand(t *testing.T) {
 	})
 
 	t.Run("init with fish shell", func(t *testing.T) {
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "fish")
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "fish")
 
 		// Pass the current environment to ensure XDG variables are available
 		initCmd.Env = os.Environ()
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init --shell fish failed")
+		require.NoError(t, err, "antidot-home init --shell fish failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -138,14 +138,14 @@ func TestInitCommand(t *testing.T) {
 	})
 
 	t.Run("init with zsh shell", func(t *testing.T) {
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "zsh")
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "zsh")
 
 		// Pass the current environment to ensure XDG variables are available
 		initCmd.Env = os.Environ()
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init --shell zsh failed")
+		require.NoError(t, err, "antidot-home init --shell zsh failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -159,10 +159,10 @@ func TestInitCommand(t *testing.T) {
 	})
 
 	t.Run("init with invalid shell", func(t *testing.T) {
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "invalid_shell")
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "invalid_shell")
 		_, err := initCmd.Output()
-		require.Error(t, err, "antidot init with invalid shell should fail")
+		require.Error(t, err, "antidot-home init with invalid shell should fail")
 
 		// Check that the error message mentions supported shells
 		if exitErr, ok := err.(*exec.ExitError); ok {
@@ -187,15 +187,15 @@ func TestInitWithKeyValueStore(t *testing.T) {
 		require.NoError(t, err, "Failed to write test key-value store")
 		tmpFile.Close()
 
-		// Run antidot init with the custom key-value store
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "bash")
+		// Run antidot-home init with the custom key-value store
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "bash")
 
-		// Set the ANTIDOT_STATE_FILE environment variable
-		initCmd.Env = append(os.Environ(), "ANTIDOT_STATE_FILE="+tmpFile.Name())
+		// Set the ANTIDOT_HOME_STATE_FILE environment variable
+		initCmd.Env = append(os.Environ(), "ANTIDOT_HOME_STATE_FILE="+tmpFile.Name())
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init failed")
+		require.NoError(t, err, "antidot-home init failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -219,15 +219,15 @@ func TestInitWithKeyValueStore(t *testing.T) {
 		require.NoError(t, err, "Failed to write test key-value store")
 		tmpFile.Close()
 
-		// Run antidot init with fish shell
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "fish")
+		// Run antidot-home init with fish shell
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "fish")
 
-		// Set the ANTIDOT_STATE_FILE environment variable
-		initCmd.Env = append(os.Environ(), "ANTIDOT_STATE_FILE="+tmpFile.Name())
+		// Set the ANTIDOT_HOME_STATE_FILE environment variable
+		initCmd.Env = append(os.Environ(), "ANTIDOT_HOME_STATE_FILE="+tmpFile.Name())
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init failed")
+		require.NoError(t, err, "antidot-home init failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -246,18 +246,18 @@ func TestInitCommandOutputConsistency(t *testing.T) {
 	defer env.Cleanup()
 
 	t.Run("init output is consistent across runs", func(t *testing.T) {
-		antidotPath := tests.GetAntidotPath(t)
+		antidotHomePath := tests.GetAntidotHomePath(t)
 
-		// Run antidot init multiple times
-		initCmd1 := exec.Command(antidotPath, "init", "--shell", "bash")
+		// Run antidot-home init multiple times
+		initCmd1 := exec.Command(antidotHomePath, "init", "--shell", "bash")
 		initCmd1.Env = os.Environ()
 		output1, err := initCmd1.Output()
-		require.NoError(t, err, "First antidot init failed")
+		require.NoError(t, err, "First antidot-home init failed")
 
-		initCmd2 := exec.Command(antidotPath, "init", "--shell", "bash")
+		initCmd2 := exec.Command(antidotHomePath, "init", "--shell", "bash")
 		initCmd2.Env = os.Environ()
 		output2, err := initCmd2.Output()
-		require.NoError(t, err, "Second antidot init failed")
+		require.NoError(t, err, "Second antidot-home init failed")
 
 		// The output should contain the same content, but order may vary due to map iteration
 		output1Str := string(output1)
@@ -297,15 +297,15 @@ func TestInitCommandFormatting(t *testing.T) {
 		require.NoError(t, err, "Failed to write test key-value store")
 		tmpFile.Close()
 
-		// Run antidot init
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "bash")
+		// Run antidot-home init
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "bash")
 
-		// Set the ANTIDOT_STATE_FILE environment variable
-		initCmd.Env = append(os.Environ(), "ANTIDOT_STATE_FILE="+tmpFile.Name())
+		// Set the ANTIDOT_HOME_STATE_FILE environment variable
+		initCmd.Env = append(os.Environ(), "ANTIDOT_HOME_STATE_FILE="+tmpFile.Name())
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init failed")
+		require.NoError(t, err, "antidot-home init failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -329,15 +329,15 @@ func TestInitCommandFormatting(t *testing.T) {
 		require.NoError(t, err, "Failed to write test key-value store")
 		tmpFile.Close()
 
-		// Run antidot init
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "fish")
+		// Run antidot-home init
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "fish")
 
-		// Set the ANTIDOT_STATE_FILE environment variable
-		initCmd.Env = append(os.Environ(), "ANTIDOT_STATE_FILE="+tmpFile.Name())
+		// Set the ANTIDOT_HOME_STATE_FILE environment variable
+		initCmd.Env = append(os.Environ(), "ANTIDOT_HOME_STATE_FILE="+tmpFile.Name())
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init failed")
+		require.NoError(t, err, "antidot-home init failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -361,15 +361,15 @@ func TestInitCommandFormatting(t *testing.T) {
 		require.NoError(t, err, "Failed to write test key-value store")
 		tmpFile.Close()
 
-		// Run antidot init
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "bash")
+		// Run antidot-home init
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "bash")
 
-		// Set the ANTIDOT_STATE_FILE environment variable
-		initCmd.Env = append(os.Environ(), "ANTIDOT_STATE_FILE="+tmpFile.Name())
+		// Set the ANTIDOT_HOME_STATE_FILE environment variable
+		initCmd.Env = append(os.Environ(), "ANTIDOT_HOME_STATE_FILE="+tmpFile.Name())
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init failed")
+		require.NoError(t, err, "antidot-home init failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)
@@ -393,15 +393,15 @@ func TestInitCommandFormatting(t *testing.T) {
 		require.NoError(t, err, "Failed to write test key-value store")
 		tmpFile.Close()
 
-		// Run antidot init
-		antidotPath := tests.GetAntidotPath(t)
-		initCmd := exec.Command(antidotPath, "init", "--shell", "fish")
+		// Run antidot-home init
+		antidotHomePath := tests.GetAntidotHomePath(t)
+		initCmd := exec.Command(antidotHomePath, "init", "--shell", "fish")
 
-		// Set the ANTIDOT_STATE_FILE environment variable
-		initCmd.Env = append(os.Environ(), "ANTIDOT_STATE_FILE="+tmpFile.Name())
+		// Set the ANTIDOT_HOME_STATE_FILE environment variable
+		initCmd.Env = append(os.Environ(), "ANTIDOT_HOME_STATE_FILE="+tmpFile.Name())
 
 		output, err := initCmd.Output()
-		require.NoError(t, err, "antidot init failed")
+		require.NoError(t, err, "antidot-home init failed")
 
 		outputStr := string(output)
 		normalizedOutput := normalizeOutput(outputStr)

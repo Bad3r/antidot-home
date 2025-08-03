@@ -17,7 +17,7 @@ export GIT_SSH_COMMAND="ssh -i ~/.ssh/aur.key -o UserKnownHostsFile=/dev/null -o
 cd ${ROOT}/ci/aur
 
 rm -rf aur-package-repo
-git clone aur@aur.archlinux.org:antidot-bin aur-package-repo 2>&1
+git clone aur@aur.archlinux.org:antidot-home-bin aur-package-repo 2>&1
 
 export SHA256SUM=$(sha256sum ${BINARY_PATH} | awk '{ print $1 }')
 
@@ -35,8 +35,8 @@ else
 fi
 
 export DESCRIPTION="Cleans up your \$HOME from those pesky dotfiles"
-export BINARY_NAME="antidot"
-export REPO_URL="https://github.com/bad3r/antidot"
+export BINARY_NAME="antidot-home"
+export REPO_URL="https://github.com/bad3r/antidot-home"
 
 ENVSUBST_VARS="\$PKGVER \$VERSION \$RELEASE \$SHA256SUM \$DESCRIPTION \$BINARY_NAME \$REPO_URL"
 

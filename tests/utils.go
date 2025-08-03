@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/bad3r/antidot/internal/utils"
+	"github.com/bad3r/antidot-home/internal/utils"
 	"github.com/stretchr/testify/require"
 )
 
@@ -26,7 +26,7 @@ func SetupTestEnv(t *testing.T) *TestEnv {
 
 	// Override the app directories to use our temp directory
 	originalAppName := utils.AppDirs.AppName
-	utils.AppDirs.AppName = "antidot_test"
+	utils.AppDirs.AppName = "antidot_home_test"
 
 	// Set all XDG variables to our temp directory to ensure complete isolation
 	originalXdgDataHome := os.Getenv("XDG_DATA_HOME")
@@ -61,9 +61,9 @@ func (te *TestEnv) Cleanup() {
 	os.Setenv("XDG_RUNTIME_DIR", te.OriginalXdgRuntimeDir)
 }
 
-// GetAntidotPath returns the absolute path to the antidot binary
-func GetAntidotPath(t *testing.T) string {
-	antidotPath, err := filepath.Abs("../../antidot")
-	require.NoError(t, err, "Failed to get absolute path to antidot")
-	return antidotPath
+// GetAntidotHomePath returns the absolute path to the antidot-home binary
+func GetAntidotHomePath(t *testing.T) string {
+	antidotHomePath, err := filepath.Abs("../../antidot-home")
+	require.NoError(t, err, "Failed to get absolute path to antidot-home")
+	return antidotHomePath
 }

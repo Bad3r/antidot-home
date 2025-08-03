@@ -3,8 +3,8 @@ package rules
 import (
 	"os"
 
-	"github.com/bad3r/antidot/internal/tui"
-	"github.com/bad3r/antidot/internal/utils"
+	"github.com/bad3r/antidot-home/internal/tui"
+	"github.com/bad3r/antidot-home/internal/utils"
 )
 
 type Delete struct {

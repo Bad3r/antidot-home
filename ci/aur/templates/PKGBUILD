@@ -1,7 +1,7 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 # Maintainer: Doron Cohen <me@doron.dev>
 
-pkgname=antidot-bin
+pkgname=antidot-home-bin
 pkgdesc="${DESCRIPTION}"
 url="${REPO_URL}"
 license=("MIT")
@@ -10,13 +10,13 @@ arch=("x86_64")
 pkgver=${PKGVER}
 pkgrel=${RELEASE}
 
-provides=("antidot")
-conflicts=("antidot")
+provides=("antidot-home")
+conflicts=("antidot-home")
 depends=()
 
-source=("antidot-${VERSION}.bin::${REPO_URL}/releases/download/v${VERSION}/antidot_${VERSION}_linux_amd64")
+source=("antidot-home-${VERSION}.bin::${REPO_URL}/releases/download/v${VERSION}/antidot-home_${VERSION}_linux_amd64")
 sha256sums=("${SHA256SUM}")
 
 package() {
-  install -Dm 0755 "$srcdir/antidot-${VERSION}.bin" "$pkgdir/usr/bin/antidot"
+  install -Dm 0755 "$srcdir/antidot-home-${VERSION}.bin" "$pkgdir/usr/bin/antidot-home"
 }

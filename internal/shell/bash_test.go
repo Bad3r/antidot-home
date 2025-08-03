@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bad3r/antidot/internal/shell"
+	"github.com/bad3r/antidot-home/internal/shell"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
