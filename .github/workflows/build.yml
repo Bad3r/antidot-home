@@ -3,10 +3,10 @@ name: Build and Verify
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
 
 # Security: Set minimal permissions
 permissions:
@@ -54,7 +54,7 @@ jobs:
           check-latest: true
 
       - name: Cache Go Modules
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: go mod download
 
       - name: Check Formatting
@@ -77,7 +77,7 @@ jobs:
         run: go build -race -v -o antidot-race .
 
       - name: Trim Go Cache
-        if: ${{ github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest' }}
+        if: ${{ github.ref == 'refs/heads/main' && matrix.os == 'ubuntu-latest' }}
         run: |
           find ~/.cache/go-build -type f -mmin +90 -delete || true
 

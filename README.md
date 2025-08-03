@@ -1,6 +1,6 @@
 # antidot :house: :small_orange_diamond: :boom:
 
-![Pipeline](https://github.com/doron-cohen/antidot/workflows/Pipeline/badge.svg?branch=master)
+![Pipeline](https://github.com/bad3r/antidot/workflows/Pipeline/badge.svg?branch=main)
 
 Cleans up your `$HOME` from those pesky dotfiles.
 
@@ -24,11 +24,13 @@ yay -Sy antidot-bin
 
 ### Homebrew
 
+Not available. Use the original verison form [doron-cohen/antidot](https://github.com/doron-cohen/antidot):\
+
 ```shell
 brew install doron-cohen/tap/antidot
 ```
 
-Go to the [releases](https://github.com/doron-cohen/antidot/releases) section and grab the one that fits your OS.
+Go to the [releases](https://github.com/bad3r/antidot/releases) section and grab the one that fits your OS.
 
 After installing run `antidot update` to download the latest rules file and you're all set!
 
