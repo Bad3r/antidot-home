@@ -5,27 +5,29 @@
 ### Bug Fixes
 
 * fix file exists check
-* fallback to system default xdg values ([#37](https://github.com/Bad3r/antidot-home/issues/37))
-* revert go mod tidy changes and remove toolchain directive
+* format code and add pre-commit framework
+* handle detached HEAD in release workflow changelog update
+* go version format in go.mod
+* handle errors in various places
 * go-dependency-submission hash ([#13](https://github.com/Bad3r/antidot-home/issues/13))
 * add minimal build step for integration tests
 * update go.mod to Go 1.18 for dependency compatibility
 * handle empty braces {} in fish shell unbracketEnvVar function
-* handle errors in various places
+* handle action errors
 * remove eq sign in fish set command
-* skip dump when nothing applied
+* add message about running antidot init ([#87](https://github.com/Bad3r/antidot-home/issues/87))
 * add missing dollar sign to bash init stub
 * write tmp file to same partition in atomic write
-* format code and add pre-commit framework
-* handle action errors
-* print help when no command is passed ([#43](https://github.com/Bad3r/antidot-home/issues/43))
+* revert go mod tidy changes and remove toolchain directive
+* update goreleaser to v2 with --clean flag and explicit version
+* skip dump when nothing applied
 * check file existance before sourcing it ([#88](https://github.com/Bad3r/antidot-home/issues/88))
 * remove quotes from env fallback values
 * remove init var check ([#70](https://github.com/Bad3r/antidot-home/issues/70))
 * skip ignored rules
-* go version format in go.mod
+* fallback to system default xdg values ([#37](https://github.com/Bad3r/antidot-home/issues/37))
 * don't override existing xdg values ([#42](https://github.com/Bad3r/antidot-home/issues/42))
-* add message about running antidot init ([#87](https://github.com/Bad3r/antidot-home/issues/87))
+* print help when no command is passed ([#43](https://github.com/Bad3r/antidot-home/issues/43))
 * use correct data path for alias and env files
 * ensure data home exists before rules update
 * add proper error when missing rules file
