@@ -36,7 +36,7 @@ fi
 
 export DESCRIPTION="Cleans up your \$HOME from those pesky dotfiles"
 export BINARY_NAME="antidot"
-export REPO_URL="https://github.com/doron-cohen/antidot"
+export REPO_URL="https://github.com/bad3r/antidot"
 
 ENVSUBST_VARS="\$PKGVER \$VERSION \$RELEASE \$SHA256SUM \$DESCRIPTION \$BINARY_NAME \$REPO_URL"
 

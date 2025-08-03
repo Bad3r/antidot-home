@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/doron-cohen/antidot/cmd"
+	"github.com/bad3r/antidot/cmd"
 )
 
 /*

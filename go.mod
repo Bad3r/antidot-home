@@ -1,4 +1,4 @@
-module github.com/doron-cohen/antidot
+module github.com/bad3r/antidot
 
 go 1.21
 

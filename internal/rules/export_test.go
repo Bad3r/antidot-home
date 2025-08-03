@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/doron-cohen/antidot/internal/rules"
-	"github.com/doron-cohen/antidot/internal/shell"
-	"github.com/doron-cohen/antidot/internal/utils"
+	"github.com/bad3r/antidot/internal/rules"
+	"github.com/bad3r/antidot/internal/shell"
+	"github.com/bad3r/antidot/internal/utils"
 )
 
 func TestExportNoEnv(t *testing.T) {
