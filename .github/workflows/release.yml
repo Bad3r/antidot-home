@@ -33,7 +33,7 @@ jobs:
           tar czf antidot-${VERSION}.tar.gz --transform "s,^,antidot-${VERSION}/," --exclude dist *
 
       - name: Upload release tarball
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: antidot-*.tar.gz
           append_body: true
