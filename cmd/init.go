@@ -3,8 +3,8 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	sh "github.com/doron-cohen/antidot/internal/shell"
-	"github.com/doron-cohen/antidot/internal/tui"
+	sh "github.com/bad3r/antidot/internal/shell"
+	"github.com/bad3r/antidot/internal/tui"
 )
 
 func init() {

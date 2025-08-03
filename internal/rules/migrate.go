@@ -4,8 +4,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/doron-cohen/antidot/internal/tui"
-	"github.com/doron-cohen/antidot/internal/utils"
+	"github.com/bad3r/antidot/internal/tui"
+	"github.com/bad3r/antidot/internal/utils"
 )
 
 type Migrate struct {

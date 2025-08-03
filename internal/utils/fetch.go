@@ -9,7 +9,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/doron-cohen/antidot/internal/tui"
+	"github.com/bad3r/antidot/internal/tui"
 )
 
 func Download(src, dest string) error {

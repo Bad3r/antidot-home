@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/doron-cohen/antidot/internal/dotfile"
+	"github.com/bad3r/antidot/internal/dotfile"
 
-	"github.com/doron-cohen/antidot/internal/rules"
+	"github.com/bad3r/antidot/internal/rules"
 	"github.com/google/go-cmp/cmp"
 )
 

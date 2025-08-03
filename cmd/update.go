@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/doron-cohen/antidot/internal/tui"
-	"github.com/doron-cohen/antidot/internal/utils"
+	"github.com/bad3r/antidot/internal/tui"
+	"github.com/bad3r/antidot/internal/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -10,7 +10,7 @@ func init() {
 	rootCmd.AddCommand(updateCmd)
 }
 
-var rulesSource = "https://raw.githubusercontent.com/doron-cohen/antidot/master/rules.yaml"
+var rulesSource = "https://raw.githubusercontent.com/bad3r/antidot/master/rules.yaml"
 
 var updateCmd = &cobra.Command{
 	Use:   "update",

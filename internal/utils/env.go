@@ -7,7 +7,7 @@ import (
 
 	"github.com/adrg/xdg"
 
-	"github.com/doron-cohen/antidot/internal/tui"
+	"github.com/bad3r/antidot/internal/tui"
 )
 
 func GetHomeDir() (string, error) {

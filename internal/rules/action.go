@@ -7,7 +7,7 @@ import (
 
 	"github.com/mitchellh/mapstructure"
 
-	"github.com/doron-cohen/antidot/internal/shell"
+	"github.com/bad3r/antidot/internal/shell"
 )
 
 type ActionContext struct {

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/doron-cohen/antidot/internal/utils"
+	"github.com/bad3r/antidot/internal/utils"
 	"github.com/stretchr/testify/require"
 )
 

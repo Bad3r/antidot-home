@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/doron-cohen/antidot/internal/tui"
-	"github.com/doron-cohen/antidot/internal/utils"
+	"github.com/bad3r/antidot/internal/tui"
+	"github.com/bad3r/antidot/internal/utils"
 )
 
 var rulesFilePath string

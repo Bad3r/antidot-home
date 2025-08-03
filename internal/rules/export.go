@@ -1,7 +1,7 @@
 package rules
 
 import (
-	"github.com/doron-cohen/antidot/internal/tui"
+	"github.com/bad3r/antidot/internal/tui"
 )
 
 type Export struct {
