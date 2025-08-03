@@ -10,18 +10,22 @@ on:
       - "rules.schema.yaml"
       - "rules.yaml"
 
+# Security: Set minimal permissions
+permissions:
+  contents: read
+
 jobs:
   ValidateRules:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Setup Node
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: "15"
+          node-version: "20"
 
       - name: Validate Rules Schema
         run: npx ajv-cli validate -s rules.schema.yaml -d rules.yaml

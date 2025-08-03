@@ -1,0 +1,102 @@
+name: Build and Verify
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+# Security: Set minimal permissions
+permissions:
+  contents: read
+
+jobs:
+  verify-deps:
+    name: Verify Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup Go
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+        with:
+          go-version-file: 'go.mod'
+          check-latest: true
+
+      - name: Verify Module Dependencies
+        run: |
+          go mod verify
+          go mod tidy
+          if [ -n "$(git status --porcelain go.mod go.sum)" ]; then
+            echo "::error::go.mod or go.sum is not up to date. Please run 'go mod tidy'"
+            git diff go.mod go.sum
+            exit 1
+          fi
+
+  build:
+    name: Build and Analyze
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        go-version: ['1.18', '1.21', '1.23']
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup Go ${{ matrix.go-version }}
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+        with:
+          go-version: ${{ matrix.go-version }}
+          check-latest: true
+
+      - name: Cache Go Modules
+        if: ${{ github.ref == 'refs/heads/master' }}
+        run: go mod download
+
+      - name: Check Formatting
+        run: |
+          if [ -n "$(gofmt -l .)" ]; then
+            echo "::error::Code is not properly formatted. Please run 'gofmt -w .'"
+            gofmt -d .
+            exit 1
+          fi
+
+      - name: Run Go Vet
+        run: go vet ./...
+
+      - name: Build Binary
+        run: |
+          go build -v -o antidot .
+          ./antidot --version
+
+      - name: Build with Race Detector
+        run: go build -race -v -o antidot-race .
+
+      - name: Trim Go Cache
+        if: ${{ github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest' }}
+        run: |
+          find ~/.cache/go-build -type f -mmin +90 -delete || true
+
+  security-scan:
+    name: Security Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup Go
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+        with:
+          go-version-file: 'go.mod'
+          check-latest: true
+
+      - name: Run Go Security Check
+        run: |
+          go list -json -deps ./... | \
+          jq -r '.Module.Path + "@" + .Module.Version' | \
+          sort -u | \
+          grep -v "^@" || true
