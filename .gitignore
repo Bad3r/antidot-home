@@ -6,6 +6,9 @@
 !.vscode/extensions.json
 *.code-workspace
 
+### Claude Code ###
+.claude/
+
 ### Go ###
 # Binaries for programs and plugins
 *.exe

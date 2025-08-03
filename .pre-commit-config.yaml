@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/tekwizely/pre-commit-golang
+    rev: v1.0.0-rc.2
+    hooks:
+      # Formatters
+      - id: go-fmt
+      - id: go-fmt-repo
+      
+      # Go Mod Tidy
+      - id: go-mod-tidy
+      - id: go-mod-tidy-repo
+      
+      # Go Vet
+      - id: go-vet
+      - id: go-vet-repo-mod
+      
+      # Go Test
+      - id: go-test-repo-mod
+      
+      # GolangCI-Lint - comprehensive linting
+      - id: golangci-lint-repo-mod
