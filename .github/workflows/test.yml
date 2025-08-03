@@ -1,4 +1,4 @@
-name: Pipeline
+name: Test
 
 on:
   push:
@@ -8,27 +8,30 @@ on:
     branches:
       - master
 
+# Security: Set minimal permissions
+permissions:
+  contents: read
+
 jobs:
-  Test:
+  test:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
+      - name: Checkout Repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: Setup Go 1.x
-        uses: actions/setup-go@v3
+      - name: Setup Go
+        uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v5.0.0
         with:
-          go-version: "1.18"
-
-      - name: Build antidot binary
-        run: go build -o antidot .
+          go-version-file: 'go.mod'
+          check-latest: true
 
       - name: Run Tests
         run: go test -json ./... > test_results.json
 
       - name: Annotate Tests
         if: always()
-        uses: guyarb/golang-test-annoations@v0.6.0
+        uses: guyarb/golang-test-annoations@9fc897b09d75e9964d0b83170920c93406074999 # v0.8.0
         with:
           test-results: test_results.json
