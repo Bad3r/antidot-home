@@ -27,6 +27,9 @@ jobs:
           go-version-file: 'go.mod'
           check-latest: true
 
+      - name: Build Binary for Tests
+        run: go build -o antidot .
+
       - name: Run Tests
         run: go test -json ./... > test_results.json
 
