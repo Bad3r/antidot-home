@@ -1,11 +1,11 @@
-pkgbase = antidot-bin
+pkgbase = antidot-home-bin
 	pkgdesc = ${DESCRIPTION}
 	url = ${REPO_URL}
 	license = MIT
 	arch = x86_64
 	pkgver = ${PKGVER}
 	pkgrel = ${RELEASE}
-	source = antidot-${VERSION}.bin::${REPO_URL}/releases/download/v${VERSION}/antidot_${VERSION}_linux_amd64
+	source = antidot-home-${VERSION}.bin::${REPO_URL}/releases/download/v${VERSION}/antidot-home_${VERSION}_linux_amd64
 	sha256sums = ${SHA256SUM}
 
-pkgname = antidot-bin
+pkgname = antidot-home-bin

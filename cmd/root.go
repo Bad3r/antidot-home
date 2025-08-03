@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/bad3r/antidot/internal/tui"
-	"github.com/bad3r/antidot/internal/utils"
+	"github.com/bad3r/antidot-home/internal/tui"
+	"github.com/bad3r/antidot-home/internal/utils"
 )
 
 var rulesFilePath string
@@ -16,7 +16,7 @@ var rulesFilePath string
 var shellOverride string
 
 var rootCmd = &cobra.Command{
-	Use:   "antidot",
+	Use:   "antidot-home",
 	Short: "Clean your $HOME from those pesky dotfiles",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {

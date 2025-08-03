@@ -1,4 +1,4 @@
-module github.com/bad3r/antidot
+module github.com/bad3r/antidot-home
 
 go 1.21
 

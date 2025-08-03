@@ -3,8 +3,8 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	sh "github.com/bad3r/antidot/internal/shell"
-	"github.com/bad3r/antidot/internal/tui"
+	sh "github.com/bad3r/antidot-home/internal/shell"
+	"github.com/bad3r/antidot-home/internal/tui"
 )
 
 func init() {
@@ -16,7 +16,7 @@ func init() {
 
 var initCmd = &cobra.Command{
 	Use:   "init",
-	Short: "Initialize antidot for aliases and env vars to work",
+	Short: "Initialize antidot-home for aliases and env vars to work",
 	Run: func(cmd *cobra.Command, args []string) {
 		shell, err := sh.Get(shellOverride)
 		tui.FatalIfError("", err)

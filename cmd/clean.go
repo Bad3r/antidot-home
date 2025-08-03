@@ -7,10 +7,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/bad3r/antidot/internal/rules"
-	"github.com/bad3r/antidot/internal/shell"
-	"github.com/bad3r/antidot/internal/tui"
-	"github.com/bad3r/antidot/internal/utils"
+	"github.com/bad3r/antidot-home/internal/rules"
+	"github.com/bad3r/antidot-home/internal/shell"
+	"github.com/bad3r/antidot-home/internal/tui"
+	"github.com/bad3r/antidot-home/internal/utils"
 )
 
 func init() {
@@ -29,7 +29,7 @@ var cleanCmd = &cobra.Command{
 		rulesConfig, err := rules.LoadRulesConfig(rulesFilePath)
 		if err != nil {
 			if _, rulesMissing := err.(*rules.MissingRulesFile); rulesMissing {
-				tui.Print("Couldn't find rules file. Please run `antidot update`.")
+				tui.Print("Couldn't find rules file. Please run `antidot-home update`.")
 				os.Exit(2)
 			}
 			tui.FatalIfError("Failed to read rules file", err)
@@ -71,7 +71,7 @@ var cleanCmd = &cobra.Command{
 		if appliedRule {
 			tui.Print(
 				"Cleanup finished - run %s to take effect",
-				tui.ApplyStyle(tui.Blue, "eval \"$(antidot init)\""),
+				tui.ApplyStyle(tui.Blue, "eval \"$(antidot-home init)\""),
 			)
 		} else {
 			tui.Print("No dotfiles detected in home directory. You're all clean!")

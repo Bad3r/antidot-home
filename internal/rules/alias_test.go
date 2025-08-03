@@ -6,9 +6,9 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/bad3r/antidot/internal/rules"
-	"github.com/bad3r/antidot/internal/shell"
-	"github.com/bad3r/antidot/internal/utils"
+	"github.com/bad3r/antidot-home/internal/rules"
+	"github.com/bad3r/antidot-home/internal/shell"
+	"github.com/bad3r/antidot-home/internal/utils"
 )
 
 func TestAliasNoEnv(t *testing.T) {

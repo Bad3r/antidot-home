@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bad3r/antidot/internal/shell"
+	"github.com/bad3r/antidot-home/internal/shell"
 )
 
 type TestSh struct{}

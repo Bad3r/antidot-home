@@ -28,7 +28,7 @@ jobs:
           check-latest: true
 
       - name: Build Binary for Tests
-        run: go build -o antidot .
+        run: go build -o antidot-home .
 
       - name: Run Tests
         run: go test -json ./... > test_results.json

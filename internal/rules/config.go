@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/bad3r/antidot/internal/tui"
+	"github.com/bad3r/antidot-home/internal/tui"
 	"github.com/mitchellh/mapstructure"
 	"gopkg.in/yaml.v2"
 )

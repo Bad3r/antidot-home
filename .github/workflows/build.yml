@@ -70,11 +70,11 @@ jobs:
 
       - name: Build Binary
         run: |
-          go build -v -o antidot .
-          ./antidot --version
+          go build -v -o antidot-home .
+          ./antidot-home --version
 
       - name: Build with Race Detector
-        run: go build -race -v -o antidot-race .
+        run: go build -race -v -o antidot-home-race .
 
       - name: Trim Go Cache
         if: ${{ github.ref == 'refs/heads/main' && matrix.os == 'ubuntu-latest' }}
