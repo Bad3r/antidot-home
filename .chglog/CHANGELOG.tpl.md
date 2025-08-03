@@ -6,7 +6,7 @@
 ### {{ .Title }}
 
 {{ range .Commits -}}
-* {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}{{ if .Refs }} ({{ range .Refs }}{{ if .Action }}{{ .Action }} {{ end }}[{{ .Ref }}]({{ $.Info.RepositoryURL }}/{{ .Type }}/{{ .Ref }}){{ end }}){{ end }}
+* {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
 {{ end }}
 {{ end -}}
 
