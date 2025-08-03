@@ -18,6 +18,7 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for changelog generation
           token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
       - name: Set up Go
         uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
@@ -37,13 +38,25 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Fetch and checkout main branch
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+          
+          # Generate changelog again on main branch
+          git-chglog -o CHANGELOG.md
+          
           git add CHANGELOG.md
           if git diff --staged --quiet; then
             echo "No changes to CHANGELOG.md"
           else
             git commit -m "chore: update CHANGELOG.md for ${GITHUB_REF_NAME}"
-            git push origin HEAD:main
+            git push origin main
           fi
+          
+          # Go back to the tag for the rest of the workflow
+          git checkout ${GITHUB_REF_NAME}
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@9c156ee8a17a598857849441385a2041ef570552 # v6.3.0

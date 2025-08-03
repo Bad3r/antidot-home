@@ -1,12 +1,4 @@
 
-<a name="v1.0.1"></a>
-## [v1.0.1](https://github.com/Bad3r/antidot-home/compare/v1.0.0...v1.0.1) (2025-08-03)
-
-### Bug Fixes
-
-* update goreleaser to v2 with --clean flag and explicit version
-
-
 <a name="v1.0.0"></a>
 ## v1.0.0 (2025-08-03)
 
