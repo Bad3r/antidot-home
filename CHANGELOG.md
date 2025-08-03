@@ -1,80 +1,82 @@
-## [0.4.1](https://github.com/doron-cohen/antidot/compare/v0.4.0...v0.4.1) (2020-12-14)
 
-
-### Bug Fixes
-
-* remove quotes from env fallback values ([73081fd](https://github.com/doron-cohen/antidot/commit/73081fd3d84629ce0e35b9b62da64f99ef23b7b4))
-
-
-
-# [0.4.0](https://github.com/doron-cohen/antidot/compare/v0.3.0...v0.4.0) (2020-12-13)
-
+<a name="v1.0.0"></a>
+## v1.0.0 (2025-08-03)
 
 ### Bug Fixes
 
-* don't override existing xdg values ([#42](https://github.com/doron-cohen/antidot/issues/42)) ([7d3611d](https://github.com/doron-cohen/antidot/commit/7d3611db380dacdb93e447b7cc754a0d7b4648bc))
-* fallback to system default xdg values ([#37](https://github.com/doron-cohen/antidot/issues/37)) ([ed96942](https://github.com/doron-cohen/antidot/commit/ed969424d07675203db53b76943846d2521d8bdf))
-* print help when no command is passed ([#43](https://github.com/doron-cohen/antidot/issues/43)) ([fb660ea](https://github.com/doron-cohen/antidot/commit/fb660eadbbdfc7336db06259c904e8ee040698c6))
-* remove init var check ([#70](https://github.com/doron-cohen/antidot/issues/70)) ([32f26a3](https://github.com/doron-cohen/antidot/commit/32f26a37e7eb8903f6bf6d6a29ad0b8da62eeff7))
-* skip ignored rules ([365f7aa](https://github.com/doron-cohen/antidot/commit/365f7aac4554e53aad836427dd80c2d807995103))
+* fix file exists check
+* fallback to system default xdg values ([#37](https://github.com/Bad3r/antidot-home/issues/37))
+* revert go mod tidy changes and remove toolchain directive
+* go-dependency-submission hash ([#13](https://github.com/Bad3r/antidot-home/issues/13))
+* add minimal build step for integration tests
+* update go.mod to Go 1.18 for dependency compatibility
+* handle empty braces {} in fish shell unbracketEnvVar function
+* handle errors in various places
+* remove eq sign in fish set command
+* skip dump when nothing applied
+* add missing dollar sign to bash init stub
+* write tmp file to same partition in atomic write
+* format code and add pre-commit framework
+* handle action errors
+* print help when no command is passed ([#43](https://github.com/Bad3r/antidot-home/issues/43))
+* check file existance before sourcing it ([#88](https://github.com/Bad3r/antidot-home/issues/88))
+* remove quotes from env fallback values
+* remove init var check ([#70](https://github.com/Bad3r/antidot-home/issues/70))
+* skip ignored rules
+* go version format in go.mod
+* don't override existing xdg values ([#42](https://github.com/Bad3r/antidot-home/issues/42))
+* add message about running antidot init ([#87](https://github.com/Bad3r/antidot-home/issues/87))
+* use correct data path for alias and env files
+* ensure data home exists before rules update
+* add proper error when missing rules file
+* **config:** override old config
+* **rules:** correct Simplescreenrecorder dest
 
+### Code Refactoring
 
-### Features
-
-* support printing rules' notes ([#68](https://github.com/doron-cohen/antidot/issues/68)) ([891b969](https://github.com/doron-cohen/antidot/commit/891b969e1304e1573ac04eefd49b017fdf1474bd))
-
-
-
-# [0.3.0](https://github.com/doron-cohen/antidot/compare/v0.2.0...v0.3.0) (2020-11-14)
-
-
-### Bug Fixes
-
-* add proper error when missing rules file ([094a3b5](https://github.com/doron-cohen/antidot/commit/094a3b56faca84a16c097e3dc5a4bca998386594))
-* ensure data home exists before rules update ([cdf5c28](https://github.com/doron-cohen/antidot/commit/cdf5c281d7f6f04e3ad096ab0a3c067e98b9c188))
-* use correct data path for alias and env files ([96c90db](https://github.com/doron-cohen/antidot/commit/96c90db6cc4c66862dc9db849dadc1431621747e))
-
-
-### Features
-
-* add verbose flag ([#23](https://github.com/doron-cohen/antidot/issues/23)) ([74792b4](https://github.com/doron-cohen/antidot/commit/74792b4f305509772e4f87267305ee9be2ce39f4))
-
-
-
-# [0.2.0](https://github.com/doron-cohen/antidot/compare/v0.1.0...v0.2.0) (2020-10-16)
-
-
-### Features
-
-* add alias action ([ff9684a](https://github.com/doron-cohen/antidot/commit/ff9684a489826d3dd4e6ea5bd1a1650a5b0f80d4))
-* add export action ([bf30c9c](https://github.com/doron-cohen/antidot/commit/bf30c9c9051e422ca572e2d4bafabcdde36aed1c))
-* add update rules file command ([43fee94](https://github.com/doron-cohen/antidot/commit/43fee94cb90da465d383d033abd86f6c80f7e3b0))
-* init cmd for initializing antidot ([3e3f7b8](https://github.com/doron-cohen/antidot/commit/3e3f7b80a6de1e99c9db6468b23b72ce36795577))
-* prompt before applying rules ([061d007](https://github.com/doron-cohen/antidot/commit/061d0070b74d5d64fcf988e346867cfccd7b4d4e))
-* respect NO_COLOR env var ([6667acc](https://github.com/doron-cohen/antidot/commit/6667acc433e6d80850378fc78c07d740759e9d58))
-* rules file path flag ([7f6d912](https://github.com/doron-cohen/antidot/commit/7f6d91205bddd632a30b519d92a4b9891858979f))
-
-
-
-# [0.1.0](https://github.com/doron-cohen/antidot/compare/f57900bc3f377fff38dad83f6b728d9136a691c1...v0.1.0) (2020-10-01)
-
-
-### Bug Fixes
-
-* **config:** override old config ([29e938d](https://github.com/doron-cohen/antidot/commit/29e938dc8d04eada9431f44409097ea84c94e9e8))
-* handle action errors ([da3e349](https://github.com/doron-cohen/antidot/commit/da3e349812f29d5b1273f811d3e434edf1a7cb7b))
-
+* err on unknown regex group name
+* improve error handling
+* dedup alias and export code
+* minor ux improvements
+* move shell logic to package
+* warn on failed rules
+* change to prompt per action ([#22](https://github.com/Bad3r/antidot-home/issues/22))
+* change to a nicer prompt ([#23](https://github.com/Bad3r/antidot-home/issues/23))
+* load config concurrently and log fixes
+* rename and break action package
+* change ignored rules text
+* move get shell files to a func
+* return config from load function
+* use an action registry
+* remove unused function
+* move get home dir to utils
+* **clean:** search for rules in home dir and not the opposite
+* **clean:** search for rules in home dir and not the opposite
+* **tui:** replace deprecated survey with bubbletea v1.3.6
 
 ### Features
 
-* add color output ([a291c13](https://github.com/doron-cohen/antidot/commit/a291c1385e48541984c571f2b7920486af5a9e8b))
-* add version flag ([ca14350](https://github.com/doron-cohen/antidot/commit/ca143506256e2eb564331f6473ccbf24fad28498))
-* delete file action ([613c13b](https://github.com/doron-cohen/antidot/commit/613c13b66474ece5be0193531669dd89e2685664))
-* detect all dotfiles in homedir ([f57900b](https://github.com/doron-cohen/antidot/commit/f57900bc3f377fff38dad83f6b728d9136a691c1))
-* initial dotfile rules engine ([c78f13f](https://github.com/doron-cohen/antidot/commit/c78f13fc3110ebe3929353349809c997b41aaec2))
-* load actions from rules file ([f69d443](https://github.com/doron-cohen/antidot/commit/f69d44325e9686af4bd0665152b3a44de03ec851))
-* load rules from config file ([ddcfce7](https://github.com/doron-cohen/antidot/commit/ddcfce76f29be5c6643dfb7d75bc02932b952a74))
-* rules printing and application ([269479a](https://github.com/doron-cohen/antidot/commit/269479a5eb419872e086b5d4fa35853f1e8f943d))
-
-
+* prompt before applying rules
+* detect all dotfiles in homedir
+* add automatic changelog generation ([#21](https://github.com/Bad3r/antidot-home/issues/21))
+* respect NO_COLOR env var
+* initial dotfile rules engine
+* support fish and zsh
+* support printing rules' notes ([#68](https://github.com/Bad3r/antidot-home/issues/68))
+* add verbose flag ([#23](https://github.com/Bad3r/antidot-home/issues/23))
+* add update rules file command
+* init cmd for initializing antidot
+* improve GoReleaser configuration ([#19](https://github.com/Bad3r/antidot-home/issues/19))
+* update CI to use Go 1.24 matching local development
+* rules file path flag
+* add alias action
+* add export action
+* add version flag
+* add color output
+* delete file action
+* rules printing and application
+* load actions from rules file
+* load rules from config file
+* **ci:** Add GH Actions linting ([#15](https://github.com/Bad3r/antidot-home/issues/15))
+* **shell:** print supported shells
 
