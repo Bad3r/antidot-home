@@ -35,7 +35,7 @@ jobs:
       - name: Generate release tarball
         run: |
           VERSION=${GITHUB_REF_NAME#v}
-          tar czf antidot-${VERSION}.tar.gz --transform "s,^,antidot-${VERSION}/," --exclude dist *
+          tar czf "antidot-${VERSION}.tar.gz" --transform "s,^,antidot-${VERSION}/," --exclude dist ./*
 
       - name: Upload release tarball
         uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
