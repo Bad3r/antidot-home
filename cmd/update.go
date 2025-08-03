@@ -10,7 +10,7 @@ func init() {
 	rootCmd.AddCommand(updateCmd)
 }
 
-var rulesSource = "https://raw.githubusercontent.com/bad3r/antidot/master/rules.yaml"
+var rulesSource = "https://raw.githubusercontent.com/bad3r/antidot/main/rules.yaml"
 
 var updateCmd = &cobra.Command{
 	Use:   "update",

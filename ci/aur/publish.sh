@@ -52,7 +52,7 @@ if [ -z "$(git status --porcelain)" ]; then
   echo "No changes, skipping AUR repo update."
 else
   git commit -m "Updated to version ${VERSION} release ${RELEASE}"
-  git push origin master
+  git push origin main
 fi
 
 rm -f ~/.ssh/aur.key

@@ -3,7 +3,7 @@ name: Go Dependency Submission
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     # Run at 8:00 UTC every Monday to update the dependency graph
     - cron: '0 8 * * 1'
