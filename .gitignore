@@ -25,6 +25,7 @@
 
 # Built assets
 build/
+dist/
 
 ### Go Patch ###
 /vendor/

@@ -1,3 +1,5 @@
+version: 2
+
 before:
   hooks:
     - go mod verify
@@ -20,19 +22,23 @@ builds:
 archives:
   - id: release
     name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-    format: tar.gz
-    builds:
+    formats:
+      - tar.gz
+    ids:
       - antidot-home
 
   - id: binaries
     name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-    format: binary
-    builds:
+    formats:
+      - binary
+    ids:
       - antidot-home
 
   - id: aur
     name_template: "aur_{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
-    builds:
+    formats:
+      - tar.gz
+    ids:
       - antidot-home
     files:
       - none*
